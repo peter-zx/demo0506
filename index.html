@@ -26,7 +26,7 @@
         <section class="editor-panel" aria-label="汇报条目">
           <div class="section-heading">
             <h2>今日事项</h2>
-            <button class="text-button" type="button" data-action="add">新增一条</button>
+            <button class="text-button" type="button" data-action="add">新增下一条</button>
           </div>
           <div class="entry-list" data-entry-list></div>
         </section>
@@ -40,6 +40,21 @@
           <p class="status-line" data-status-line role="status" aria-live="polite"></p>
         </section>
       </section>
+
+      <nav class="bottom-menu" aria-label="底部操作菜单">
+        <button class="bottom-menu-button" type="button" data-action="add">
+          <span class="bottom-menu-icon" aria-hidden="true">+</span>
+          <span>新增下一条</span>
+        </button>
+        <button class="bottom-menu-button primary" type="button" data-action="copy">
+          <span class="bottom-menu-icon" aria-hidden="true">⧉</span>
+          <span>复制文本</span>
+        </button>
+        <button class="bottom-menu-button" type="button" data-action="clear">
+          <span class="bottom-menu-icon" aria-hidden="true">×</span>
+          <span>清空</span>
+        </button>
+      </nav>
     </main>
 
     <template data-entry-template>
@@ -69,4 +84,3 @@
     <script type="module" src="./src/app.js"></script>
   </body>
 </html>
-

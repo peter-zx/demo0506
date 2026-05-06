@@ -88,10 +88,12 @@ export class ReportView {
       return;
     }
 
-    this.entries.push(createEmptyEntry());
+    const entry = createEmptyEntry();
+    this.entries.push(entry);
     this.persist();
     this.render();
-    this.setStatus("已新增一条。");
+    this.focusEntry(entry.id);
+    this.setStatus("已新增下一条。");
   }
 
   removeEntry(entryId) {
@@ -173,5 +175,16 @@ export class ReportView {
     this.nodes.status.textContent = message;
     this.nodes.status.classList.toggle("error", isError);
   }
-}
 
+  focusEntry(entryId) {
+    const entry = this.nodes.list.querySelector(`[data-entry-id="${entryId}"]`);
+    const input = entry?.querySelector('[data-field="content"]');
+
+    if (!entry || !input) {
+      return;
+    }
+
+    entry.scrollIntoView({ behavior: "smooth", block: "center" });
+    input.focus({ preventScroll: true });
+  }
+}
