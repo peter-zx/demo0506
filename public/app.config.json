@@ -1,0 +1,9 @@
+{
+  "appName": "贾维斯",
+  "subtitle": "工作汇报小工具",
+  "storageKey": "jarvis-report-draft-dev",
+  "maxEntries": 50,
+  "autosave": true,
+  "logLevel": "debug"
+}
+
