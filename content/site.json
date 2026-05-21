@@ -16,13 +16,6 @@
                 },
     "tools":  [
                   {
-                      "name":  "贾维斯工作汇报",
-                      "description":  "逐条填写内容、进展、复盘，一键生成带序号汇报文本。",
-                      "url":  "/tools/work-report.html",
-                      "status":  "运行中",
-                      "category":  "效率工具"
-                  },
-                  {
                       "name":  "Work Data",
                       "description":  "工作数据处理、归档和辅助分析工具，已接入统一门户。",
                       "url":  "/tools/workdata/",
@@ -32,22 +25,22 @@
                   {
                       "name":  "记账工具",
                       "description":  "个人收支、日常账目与财务记录入口。",
-                      "url":  "https://codeup.aliyun.com/65395bc29fb5e4b27ec5da1d/jizhang_codexAa001.git",
-                      "status":  "待部署",
+                      "url":  "/tools/accounting/",
+                      "status":  "运行中",
                       "category":  "经营管理"
                   },
                   {
                       "name":  "Vault Note",
                       "description":  "资料沉淀、笔记管理和个人知识库工具。",
-                      "url":  "https://codeup.aliyun.com/65395bc29fb5e4b27ec5da1d/data_VaultNote_codex002.git",
-                      "status":  "待部署",
+                      "url":  "https://123.56.100.146/tools/vault-note/",
+                      "status":  "需放行443",
                       "category":  "知识管理"
                   },
                   {
                       "name":  "Excel 发票工具",
                       "description":  "面向发票和表格处理的效率工具。",
-                      "url":  "https://codeup.aliyun.com/65395bc29fb5e4b27ec5da1d/excel_fapiao.git",
-                      "status":  "待部署",
+                      "url":  "/tools/excel-fapiao/",
+                      "status":  "待源码",
                       "category":  "财务辅助"
                   }
               ],
