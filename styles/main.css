@@ -262,6 +262,10 @@ a {
   background: rgba(200, 166, 93, 0.16);
 }
 
+.tool-card.pending {
+  opacity: 0.78;
+}
+
 .tool-tag {
   width: fit-content;
   padding: 5px 9px;
