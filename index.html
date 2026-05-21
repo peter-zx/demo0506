@@ -1,188 +1,107 @@
 <!doctype html>
 <html lang="zh-CN">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="个人形象站与工具集合入口" />
-    <title>竹行舟 | 个人工作台</title>
-    <link rel="stylesheet" href="./styles/main.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AIGC创意人_竹相左边</title>
+    <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
-    <main class="portal-shell">
-      <nav class="portal-nav" aria-label="主导航">
-        <a class="brand-mark" href="./index.html">竹行舟</a>
-        <div class="nav-links">
-          <a href="#voyage">航行计时</a>
-          <a href="#tools">工具矩阵</a>
-          <a href="#deploy">服务架构</a>
-        </div>
+    <header class="site-header">
+      <button class="brand nav-button active" data-page="home" type="button">AIGC创意人_竹相左边</button>
+      <nav class="nav-links" aria-label="页面导航">
+        <button class="nav-button" data-page="tools" type="button">工具</button>
+        <button class="nav-button" data-page="posts" type="button">图文</button>
+        <button class="nav-button" data-page="videos" type="button">视频</button>
       </nav>
+    </header>
 
-      <section class="hero-section red-voyage" id="voyage" aria-label="航行计时主页" data-countdown-target="2026-12-31T23:59:59+08:00">
-        <div class="hero-copy">
-          <p class="eyebrow">BambooX Voyage</p>
-          <h1>航行计时</h1>
-          <p class="hero-lead">
-            保留你的红色主页气质，把倒计时放回第一屏。工具矩阵退到后方，首页先表达你自己的节奏和方向。
+    <main>
+      <section class="page home-page active" id="pageHome" data-page="home" aria-label="首页">
+        <div class="home-center">
+          <p class="home-kicker">Personal AI Journey</p>
+          <h1 id="profileName">AIGC创意人_竹相左边</h1>
+          <p class="time-line">
+            截止到 <span id="clockText">--</span>
+            <span id="journeyLabel">踏上 AI 之路</span>
           </p>
-          <div class="hero-actions">
-            <a class="hero-button primary" href="https://codeup.aliyun.com/65395bc29fb5e4b27ec5da1d/bamboox2023_hangxing.git">主页仓库</a>
-            <a class="hero-button" href="#tools">查看工具</a>
+
+          <div class="journey-counter" aria-label="AI 航行天数">
+            <span>航行</span>
+            <strong id="journeyDays">0</strong>
+            <span>DAY</span>
           </div>
-        </div>
-        <div class="voyage-panel countdown-panel" aria-label="航行倒计时">
-          <p class="countdown-label">距离下一段航程</p>
-          <div class="countdown-grid" data-countdown>
-            <div>
-              <strong data-countdown-days>000</strong>
-              <span>天</span>
-            </div>
-            <div>
-              <strong data-countdown-hours>00</strong>
-              <span>时</span>
-            </div>
-            <div>
-              <strong data-countdown-minutes>00</strong>
-              <span>分</span>
-            </div>
-            <div>
-              <strong data-countdown-seconds>00</strong>
-              <span>秒</span>
-            </div>
-          </div>
-          <dl class="voyage-stats">
-            <div>
-              <dt>目标时间</dt>
-              <dd data-countdown-target-label>2026-12-31 23:59:59</dd>
-            </div>
-            <div>
-              <dt>当前状态</dt>
-              <dd data-countdown-status>航行中</dd>
-            </div>
-            <div>
-              <dt>工具入口</dt>
-              <dd>已接入 Work Data</dd>
-            </div>
-          </dl>
+
+          <blockquote class="quote-box" id="quoteBox">加载语录中...</blockquote>
+
+          <aside class="qr-panel" aria-label="个人二维码">
+            <div class="qr-box" id="qrBox">QR</div>
+            <p id="qrText">欢迎关注公众号</p>
+          </aside>
+
         </div>
       </section>
 
-      <section class="tools-section" id="tools" aria-label="工具卡片页">
-        <div class="section-title">
-          <p class="eyebrow">Tool Deck</p>
-          <h2>工具矩阵</h2>
-          <p>每个工具独立部署、独立维护，统一从这里进入。后续可接 Nginx 路由、HTTPS 和访问控制。</p>
+      <section class="page content-page" id="pageTools" data-page="tools" aria-label="工具中心">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Tool Center</p>
+            <h2>工具中心</h2>
+          </div>
+          <span id="toolCount">0 个工具</span>
         </div>
-
-        <div class="tool-grid">
-          <a class="tool-card highlighted" href="./tools/work-report.html">
-            <span class="tool-tag">Local</span>
-            <h3>贾维斯工作汇报</h3>
-            <p>逐条填写内容、进展、复盘，一键生成带序号汇报文本。</p>
-            <span class="tool-link">打开工具</span>
-          </a>
-
-          <a class="tool-card pending" href="https://codeup.aliyun.com/65395bc29fb5e4b27ec5da1d/jizhang_codexAa001.git">
-            <span class="tool-tag">Tool 01</span>
-            <h3>记账工具</h3>
-            <p>个人收支、日常账目与财务记录入口。</p>
-            <span class="tool-link">待部署</span>
-          </a>
-
-          <a class="tool-card pending" href="https://codeup.aliyun.com/65395bc29fb5e4b27ec5da1d/data_VaultNote_codex002.git">
-            <span class="tool-tag">Tool 02</span>
-            <h3>Vault Note</h3>
-            <p>资料沉淀、笔记管理和个人知识库工具。</p>
-            <span class="tool-link">待部署</span>
-          </a>
-
-          <a class="tool-card pending" href="https://codeup.aliyun.com/65395bc29fb5e4b27ec5da1d/excel_fapiao.git">
-            <span class="tool-tag">Tool 03</span>
-            <h3>Excel 发票工具</h3>
-            <p>面向发票和表格处理的效率工具。</p>
-            <span class="tool-link">待部署</span>
-          </a>
-
-          <a class="tool-card" href="/tools/workdata/">
-            <span class="tool-tag">Tool 04</span>
-            <h3>Work Data</h3>
-            <p>工作数据处理、归档和辅助分析工具。</p>
-            <span class="tool-link">进入服务</span>
-          </a>
-        </div>
+        <p class="section-intro" id="profileIntro"></p>
+        <div class="tag-list" id="profileTags"></div>
+        <div class="tool-grid" id="toolGrid"></div>
       </section>
 
-      <section class="deploy-section" id="deploy" aria-label="服务架构">
-        <div class="section-title compact">
-          <p class="eyebrow">Deployment</p>
-          <h2>推荐服务器形态</h2>
+      <section class="page content-page" id="pagePosts" data-page="posts" aria-label="图文分享">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Articles</p>
+            <h2>图文分享</h2>
+          </div>
         </div>
-        <div class="deploy-grid">
+        <div class="content-filters" id="postFilters"></div>
+        <div class="content-list article-list" id="postList"></div>
+      </section>
+
+      <section class="page content-page" id="pageVideos" data-page="videos" aria-label="视频教程">
+        <div class="section-heading">
           <div>
-            <strong>统一主入口</strong>
-            <p>Nginx 监听 80/443，把 `/` 指向个人门户和航行计时。</p>
+            <p class="eyebrow">Videos</p>
+            <h2>视频教程</h2>
           </div>
-          <div>
-            <strong>工具独立服务</strong>
-            <p>每个仓库独立目录、独立 systemd 服务、独立本地端口。</p>
-          </div>
-          <div>
-            <strong>路由聚合</strong>
-            <p>通过 `/tools/accounting/`、`/tools/vault/` 等路径代理到各工具。</p>
-          </div>
+        </div>
+        <div class="content-filters" id="videoFilters"></div>
+        <div class="content-list video-grid" id="videoList"></div>
+      </section>
+
+      <section class="page content-page detail-page" id="pageDetail" data-page="detail" aria-label="内容详情">
+        <button class="back-button" id="detailBackButton" type="button">返回列表</button>
+        <div class="detail-layout">
+          <aside class="detail-sidebar">
+            <p class="eyebrow" id="detailSidebarTitle">更多内容</p>
+            <div id="detailSiblingList" class="sibling-list"></div>
+          </aside>
+          <article class="detail-article">
+            <p class="content-type" id="detailType"></p>
+            <h1 id="detailTitle"></h1>
+            <div class="tag-list compact" id="detailTags"></div>
+            <p class="detail-summary" id="detailSummary"></p>
+            <img class="detail-cover hidden" id="detailCover" alt="">
+            <div class="detail-body" id="detailBody"></div>
+            <a class="primary-link hidden" id="detailExternalLink" target="_blank" rel="noopener noreferrer">查看原文 / 视频</a>
+          </article>
         </div>
       </section>
     </main>
-    <script>
-      (() => {
-        const hero = document.querySelector("[data-countdown-target]");
-        if (!hero) return;
 
-        const target = new Date(hero.dataset.countdownTarget);
-        const nodes = {
-          days: document.querySelector("[data-countdown-days]"),
-          hours: document.querySelector("[data-countdown-hours]"),
-          minutes: document.querySelector("[data-countdown-minutes]"),
-          seconds: document.querySelector("[data-countdown-seconds]"),
-          status: document.querySelector("[data-countdown-status]"),
-          label: document.querySelector("[data-countdown-target-label]")
-        };
+    <footer class="site-footer">
+      <span>AI 学习与工具站</span>
+      <span>轻量门户，工具独立运行</span>
+    </footer>
 
-        if (Number.isNaN(target.getTime())) return;
-
-        nodes.label.textContent = new Intl.DateTimeFormat("zh-CN", {
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-          hour12: false
-        }).format(target);
-
-        function pad(value, length = 2) {
-          return String(value).padStart(length, "0");
-        }
-
-        function render() {
-          const diff = target.getTime() - Date.now();
-          const safeDiff = Math.max(diff, 0);
-          const totalSeconds = Math.floor(safeDiff / 1000);
-          const days = Math.floor(totalSeconds / 86400);
-          const hours = Math.floor((totalSeconds % 86400) / 3600);
-          const minutes = Math.floor((totalSeconds % 3600) / 60);
-          const seconds = totalSeconds % 60;
-
-          nodes.days.textContent = pad(days, 3);
-          nodes.hours.textContent = pad(hours);
-          nodes.minutes.textContent = pad(minutes);
-          nodes.seconds.textContent = pad(seconds);
-          nodes.status.textContent = diff <= 0 ? "已抵达" : "航行中";
-        }
-
-        render();
-        window.setInterval(render, 1000);
-      })();
-    </script>
+    <script src="./app.js" defer></script>
   </body>
 </html>

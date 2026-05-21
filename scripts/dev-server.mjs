@@ -1,5 +1,5 @@
 import { createReadStream } from "node:fs";
-import { stat } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
 import { createServer } from "node:http";
 import { extname, join, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -16,9 +16,35 @@ const mimeTypes = {
   ".svg": "image/svg+xml"
 };
 
+async function sendSiteContent(response) {
+  const sitePath = join(rootDir, "content", "site.json");
+  const rawContent = (await readFile(sitePath, "utf8")).replace(/^\uFEFF/, "");
+  const site = JSON.parse(rawContent);
+  const publicSite = {
+    ...site,
+    posts: (site.posts || []).filter((item) => item.status !== "draft"),
+    videos: (site.videos || []).filter((item) => item.status !== "draft")
+  };
+
+  response.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });
+  response.end(JSON.stringify(publicSite));
+}
+
 const server = createServer(async (request, response) => {
   try {
     const requestUrl = new URL(request.url || "/", `http://${request.headers.host}`);
+
+    if (request.method === "GET" && requestUrl.pathname === "/health") {
+      response.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });
+      response.end(JSON.stringify({ status: "ok", app: "personal-portal", time: new Date().toISOString() }));
+      return;
+    }
+
+    if (request.method === "GET" && requestUrl.pathname === "/api/site") {
+      await sendSiteContent(response);
+      return;
+    }
+
     const safePath = normalize(decodeURIComponent(requestUrl.pathname)).replace(/^(\.\.[/\\])+/, "");
     const filePath = join(rootDir, safePath === "/" ? "index.html" : safePath);
 
