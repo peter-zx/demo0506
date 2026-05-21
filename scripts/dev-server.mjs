@@ -30,17 +30,30 @@ async function sendSiteContent(response) {
   response.end(JSON.stringify(publicSite));
 }
 
+function sendOkHead(response, contentType) {
+  response.writeHead(200, { "Content-Type": contentType });
+  response.end();
+}
+
 const server = createServer(async (request, response) => {
   try {
     const requestUrl = new URL(request.url || "/", `http://${request.headers.host}`);
 
-    if (request.method === "GET" && requestUrl.pathname === "/health") {
+    if ((request.method === "GET" || request.method === "HEAD") && requestUrl.pathname === "/health") {
+      if (request.method === "HEAD") {
+        sendOkHead(response, "application/json; charset=utf-8");
+        return;
+      }
       response.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });
       response.end(JSON.stringify({ status: "ok", app: "personal-portal", time: new Date().toISOString() }));
       return;
     }
 
-    if (request.method === "GET" && requestUrl.pathname === "/api/site") {
+    if ((request.method === "GET" || request.method === "HEAD") && requestUrl.pathname === "/api/site") {
+      if (request.method === "HEAD") {
+        sendOkHead(response, "application/json; charset=utf-8");
+        return;
+      }
       await sendSiteContent(response);
       return;
     }
