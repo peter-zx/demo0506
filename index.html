@@ -18,34 +18,50 @@
         </div>
       </nav>
 
-      <section class="hero-section" id="voyage" aria-label="航行计时主页">
+      <section class="hero-section red-voyage" id="voyage" aria-label="航行计时主页" data-countdown-target="2026-12-31T23:59:59+08:00">
         <div class="hero-copy">
-          <p class="eyebrow">Personal Command Center</p>
+          <p class="eyebrow">BambooX Voyage</p>
           <h1>航行计时</h1>
           <p class="hero-lead">
-            把长期主义、日常工具和个人表达收束在一个入口里。这里是我的个人形象站，也是所有工作效率工具的统一甲板。
+            保留你的红色主页气质，把倒计时放回第一屏。工具矩阵退到后方，首页先表达你自己的节奏和方向。
           </p>
           <div class="hero-actions">
             <a class="hero-button primary" href="https://codeup.aliyun.com/65395bc29fb5e4b27ec5da1d/bamboox2023_hangxing.git">主页仓库</a>
             <a class="hero-button" href="#tools">查看工具</a>
           </div>
         </div>
-        <div class="voyage-panel" aria-label="航行状态">
-          <div class="radar">
-            <span></span>
+        <div class="voyage-panel countdown-panel" aria-label="航行倒计时">
+          <p class="countdown-label">距离下一段航程</p>
+          <div class="countdown-grid" data-countdown>
+            <div>
+              <strong data-countdown-days>000</strong>
+              <span>天</span>
+            </div>
+            <div>
+              <strong data-countdown-hours>00</strong>
+              <span>时</span>
+            </div>
+            <div>
+              <strong data-countdown-minutes>00</strong>
+              <span>分</span>
+            </div>
+            <div>
+              <strong data-countdown-seconds>00</strong>
+              <span>秒</span>
+            </div>
           </div>
           <dl class="voyage-stats">
             <div>
-              <dt>主站</dt>
-              <dd>航行计时</dd>
+              <dt>目标时间</dt>
+              <dd data-countdown-target-label>2026-12-31 23:59:59</dd>
             </div>
             <div>
-              <dt>服务模式</dt>
-              <dd>统一入口 + 独立工具</dd>
+              <dt>当前状态</dt>
+              <dd data-countdown-status>航行中</dd>
             </div>
             <div>
-              <dt>目标服务器</dt>
-              <dd>123.56.100.146</dd>
+              <dt>工具入口</dt>
+              <dd>已接入 Work Data</dd>
             </div>
           </dl>
         </div>
@@ -117,5 +133,56 @@
         </div>
       </section>
     </main>
+    <script>
+      (() => {
+        const hero = document.querySelector("[data-countdown-target]");
+        if (!hero) return;
+
+        const target = new Date(hero.dataset.countdownTarget);
+        const nodes = {
+          days: document.querySelector("[data-countdown-days]"),
+          hours: document.querySelector("[data-countdown-hours]"),
+          minutes: document.querySelector("[data-countdown-minutes]"),
+          seconds: document.querySelector("[data-countdown-seconds]"),
+          status: document.querySelector("[data-countdown-status]"),
+          label: document.querySelector("[data-countdown-target-label]")
+        };
+
+        if (Number.isNaN(target.getTime())) return;
+
+        nodes.label.textContent = new Intl.DateTimeFormat("zh-CN", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false
+        }).format(target);
+
+        function pad(value, length = 2) {
+          return String(value).padStart(length, "0");
+        }
+
+        function render() {
+          const diff = target.getTime() - Date.now();
+          const safeDiff = Math.max(diff, 0);
+          const totalSeconds = Math.floor(safeDiff / 1000);
+          const days = Math.floor(totalSeconds / 86400);
+          const hours = Math.floor((totalSeconds % 86400) / 3600);
+          const minutes = Math.floor((totalSeconds % 3600) / 60);
+          const seconds = totalSeconds % 60;
+
+          nodes.days.textContent = pad(days, 3);
+          nodes.hours.textContent = pad(hours);
+          nodes.minutes.textContent = pad(minutes);
+          nodes.seconds.textContent = pad(seconds);
+          nodes.status.textContent = diff <= 0 ? "已抵达" : "航行中";
+        }
+
+        render();
+        window.setInterval(render, 1000);
+      })();
+    </script>
   </body>
 </html>

@@ -15,6 +15,10 @@
   --ink: #101615;
   --gold: #c8a65d;
   --sea: #236d77;
+  --red: #b70818;
+  --red-dark: #5f0610;
+  --red-deep: #210306;
+  --paper: #fff5e8;
 }
 
 * {
@@ -44,12 +48,12 @@ a {
 
 .portal-shell {
   min-height: 100vh;
-  color: #f4f0e7;
+  color: var(--paper);
   background:
-    linear-gradient(115deg, rgba(16, 22, 21, 0.94), rgba(19, 44, 48, 0.9)),
-    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80");
-  background-size: cover;
-  background-position: center;
+    radial-gradient(circle at 18% 18%, rgba(255, 210, 120, 0.28), transparent 26%),
+    radial-gradient(circle at 82% 10%, rgba(255, 255, 255, 0.13), transparent 24%),
+    linear-gradient(135deg, #cf0920 0%, #850813 46%, #280408 100%);
+  overflow-x: hidden;
 }
 
 .portal-nav {
@@ -97,9 +101,36 @@ a {
   padding: 48px 0 72px;
 }
 
+.red-voyage {
+  position: relative;
+}
+
+.red-voyage::before {
+  content: "";
+  position: absolute;
+  inset: 40px auto auto -8%;
+  width: min(420px, 60vw);
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 245, 232, 0.18);
+  border-radius: 50%;
+  opacity: 0.75;
+}
+
+.red-voyage::after {
+  content: "航行";
+  position: absolute;
+  right: -2vw;
+  bottom: 4vh;
+  color: rgba(255, 245, 232, 0.06);
+  font-size: clamp(110px, 22vw, 300px);
+  font-weight: 900;
+  line-height: 1;
+  pointer-events: none;
+}
+
 .eyebrow {
   margin: 0 0 14px;
-  color: var(--gold);
+  color: #ffd57a;
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 0;
@@ -111,12 +142,13 @@ a {
   font-size: clamp(56px, 10vw, 118px);
   line-height: 0.94;
   letter-spacing: 0;
+  text-shadow: 0 12px 32px rgba(58, 0, 8, 0.34);
 }
 
 .hero-lead {
   width: min(680px, 100%);
   margin: 28px 0 0;
-  color: rgba(244, 240, 231, 0.78);
+  color: rgba(255, 245, 232, 0.82);
   font-size: clamp(18px, 2vw, 24px);
   line-height: 1.75;
 }
@@ -134,30 +166,70 @@ a {
   align-items: center;
   justify-content: center;
   padding: 0 20px;
-  border: 1px solid rgba(244, 240, 231, 0.28);
+  border: 1px solid rgba(255, 245, 232, 0.32);
   border-radius: 6px;
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 245, 232, 0.1);
 }
 
 .hero-button.primary {
-  border-color: var(--gold);
-  background: var(--gold);
-  color: var(--ink);
+  border-color: #fff0c6;
+  background: #fff0c6;
+  color: var(--red-dark);
   font-weight: 800;
 }
 
 .voyage-panel {
   min-height: 520px;
-  border: 1px solid rgba(244, 240, 231, 0.2);
+  border: 1px solid rgba(255, 245, 232, 0.22);
   border-radius: 8px;
   padding: 24px;
-  background: rgba(11, 18, 18, 0.5);
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
+  background: rgba(70, 0, 9, 0.42);
+  box-shadow: 0 28px 70px rgba(45, 0, 8, 0.32);
   backdrop-filter: blur(14px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.countdown-panel {
+  min-height: 480px;
+}
+
+.countdown-label {
+  margin: 0;
+  color: #ffd57a;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.countdown-grid div {
+  min-height: 132px;
+  border: 1px solid rgba(255, 245, 232, 0.18);
+  border-radius: 8px;
+  padding: 16px;
+  background: rgba(255, 245, 232, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.countdown-grid strong {
+  font-size: clamp(42px, 7vw, 74px);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.countdown-grid span {
+  color: rgba(255, 245, 232, 0.72);
+  font-size: 15px;
+  font-weight: 700;
 }
 
 .radar {
@@ -193,11 +265,11 @@ a {
   justify-content: space-between;
   gap: 16px;
   padding: 14px 0;
-  border-top: 1px solid rgba(244, 240, 231, 0.14);
+  border-top: 1px solid rgba(255, 245, 232, 0.16);
 }
 
 .voyage-stats dt {
-  color: rgba(244, 240, 231, 0.58);
+  color: rgba(255, 245, 232, 0.62);
 }
 
 .voyage-stats dd {
@@ -209,6 +281,11 @@ a {
 .tools-section,
 .deploy-section {
   padding: 70px 0;
+}
+
+.tools-section {
+  background: rgba(33, 3, 6, 0.36);
+  border-top: 1px solid rgba(255, 245, 232, 0.12);
 }
 
 .section-title {
@@ -226,7 +303,7 @@ a {
 .section-title p:not(.eyebrow) {
   max-width: 720px;
   margin: 0;
-  color: rgba(244, 240, 231, 0.72);
+  color: rgba(255, 245, 232, 0.72);
   line-height: 1.8;
 }
 
@@ -242,10 +319,10 @@ a {
 
 .tool-card {
   min-height: 240px;
-  border: 1px solid rgba(244, 240, 231, 0.16);
+  border: 1px solid rgba(255, 245, 232, 0.16);
   border-radius: 8px;
   padding: 22px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 245, 232, 0.08);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -254,12 +331,12 @@ a {
 
 .tool-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(200, 166, 93, 0.76);
-  background: rgba(255, 255, 255, 0.13);
+  border-color: rgba(255, 213, 122, 0.8);
+  background: rgba(255, 245, 232, 0.13);
 }
 
 .tool-card.highlighted {
-  background: rgba(200, 166, 93, 0.16);
+  background: rgba(255, 213, 122, 0.16);
 }
 
 .tool-card.pending {
@@ -269,9 +346,9 @@ a {
 .tool-tag {
   width: fit-content;
   padding: 5px 9px;
-  border: 1px solid rgba(200, 166, 93, 0.42);
+  border: 1px solid rgba(255, 213, 122, 0.5);
   border-radius: 999px;
-  color: var(--gold);
+  color: #ffd57a;
   font-size: 12px;
   font-weight: 800;
 }
@@ -284,12 +361,12 @@ a {
 
 .tool-card p {
   margin: 12px 0 24px;
-  color: rgba(244, 240, 231, 0.68);
+  color: rgba(255, 245, 232, 0.7);
   line-height: 1.75;
 }
 
 .tool-link {
-  color: var(--gold);
+  color: #ffd57a;
   font-weight: 800;
 }
 
@@ -300,9 +377,9 @@ a {
 }
 
 .deploy-grid div {
-  border-left: 2px solid var(--gold);
+  border-left: 2px solid #ffd57a;
   padding: 16px 18px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 245, 232, 0.08);
   border-radius: 0 8px 8px 0;
 }
 
@@ -314,7 +391,7 @@ a {
 
 .deploy-grid p {
   margin: 0;
-  color: rgba(244, 240, 231, 0.68);
+  color: rgba(255, 245, 232, 0.7);
   line-height: 1.7;
 }
 
@@ -623,6 +700,14 @@ textarea:focus {
     min-height: auto;
   }
 
+  .countdown-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .countdown-grid div {
+    min-height: 112px;
+  }
+
   .tool-grid,
   .deploy-grid {
     grid-template-columns: 1fr;
@@ -659,6 +744,10 @@ textarea:focus {
 
   .tool-card {
     min-height: 210px;
+  }
+
+  .countdown-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .app-shell {
