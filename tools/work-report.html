@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="贾维斯工作汇报小工具" />
+    <title>贾维斯工作汇报</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body>
+    <main class="app-shell" data-app-root data-config-url="../public/app.config.json">
+      <section class="workspace" aria-label="工作汇报编辑器">
+        <header class="topbar">
+          <div>
+            <a class="back-link" href="../index.html">返回工具矩阵</a>
+            <h1 data-app-title>贾维斯</h1>
+            <p data-app-subtitle>工作汇报小工具</p>
+          </div>
+          <div class="topbar-actions">
+            <button class="icon-button ghost" type="button" data-action="clear" title="清空全部">
+              <span aria-hidden="true">×</span>
+              <span class="sr-only">清空全部</span>
+            </button>
+          </div>
+        </header>
+
+        <section class="editor-panel" aria-label="汇报条目">
+          <div class="section-heading">
+            <h2>今日事项</h2>
+            <button class="text-button" type="button" data-action="add">新增下一条</button>
+          </div>
+          <div class="entry-list" data-entry-list></div>
+        </section>
+
+        <section class="preview-panel" aria-label="汇报文本">
+          <div class="section-heading">
+            <h2>汇报文本</h2>
+            <button class="text-button primary" type="button" data-action="copy">一键复制</button>
+          </div>
+          <textarea class="report-output" data-report-output readonly spellcheck="false"></textarea>
+          <p class="status-line" data-status-line role="status" aria-live="polite"></p>
+        </section>
+      </section>
+
+      <nav class="bottom-menu" aria-label="底部操作菜单">
+        <button class="bottom-menu-button" type="button" data-action="add">
+          <span class="bottom-menu-icon" aria-hidden="true">+</span>
+          <span>新增下一条</span>
+        </button>
+        <button class="bottom-menu-button primary" type="button" data-action="copy">
+          <span class="bottom-menu-icon" aria-hidden="true">⧉</span>
+          <span>复制文本</span>
+        </button>
+        <button class="bottom-menu-button" type="button" data-action="clear">
+          <span class="bottom-menu-icon" aria-hidden="true">×</span>
+          <span>清空</span>
+        </button>
+      </nav>
+    </main>
+
+    <template data-entry-template>
+      <article class="entry-card">
+        <div class="entry-card-header">
+          <span class="entry-index"></span>
+          <button class="icon-button" type="button" data-entry-remove title="删除此条">
+            <span aria-hidden="true">×</span>
+            <span class="sr-only">删除此条</span>
+          </button>
+        </div>
+        <label>
+          <span>做了什么内容</span>
+          <textarea data-field="content" rows="2" placeholder="例如：完成客户资料整理"></textarea>
+        </label>
+        <label>
+          <span>什么进展</span>
+          <textarea data-field="progress" rows="2" placeholder="例如：已整理 12 家客户，待补充联系方式"></textarea>
+        </label>
+        <label>
+          <span>复盘反思</span>
+          <textarea data-field="reflection" rows="2" placeholder="例如：后续按行业分类会更便于跟进"></textarea>
+        </label>
+      </article>
+    </template>
+
+    <script type="module" src="../src/app.js"></script>
+  </body>
+</html>

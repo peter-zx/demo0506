@@ -1,0 +1,56 @@
+{
+  "server": {
+    "host": "123.56.100.146",
+    "publicPorts": [80, 443],
+    "internalBasePort": 5062,
+    "root": "/opt"
+  },
+  "projects": [
+    {
+      "id": "personal-portal",
+      "name": "个人门户 / 航行计时",
+      "repo": "https://github.com/peter-zx/demo0506.git",
+      "directory": "/opt/personal-portal",
+      "port": 5062,
+      "publicPath": "/",
+      "kind": "node-static"
+    },
+    {
+      "id": "accounting",
+      "name": "记账工具",
+      "repo": "https://codeup.aliyun.com/65395bc29fb5e4b27ec5da1d/jizhang_codexAa001.git",
+      "directory": "/opt/tools-accounting",
+      "port": 5063,
+      "publicPath": "/tools/accounting/",
+      "kind": "unknown"
+    },
+    {
+      "id": "vault-note",
+      "name": "Vault Note",
+      "repo": "https://codeup.aliyun.com/65395bc29fb5e4b27ec5da1d/data_VaultNote_codex002.git",
+      "directory": "/opt/tools-vault-note",
+      "port": 5064,
+      "publicPath": "/tools/vault-note/",
+      "kind": "unknown"
+    },
+    {
+      "id": "excel-fapiao",
+      "name": "Excel 发票工具",
+      "repo": "https://codeup.aliyun.com/65395bc29fb5e4b27ec5da1d/excel_fapiao.git",
+      "directory": "/opt/tools-excel-fapiao",
+      "port": 5065,
+      "publicPath": "/tools/excel-fapiao/",
+      "kind": "unknown"
+    },
+    {
+      "id": "workdata",
+      "name": "Work Data",
+      "repo": "https://codeup.aliyun.com/65395bc29fb5e4b27ec5da1d/workdata_codex0002.git",
+      "directory": "/opt/tools-workdata",
+      "port": 5066,
+      "publicPath": "/tools/workdata/",
+      "kind": "unknown"
+    }
+  ]
+}
+

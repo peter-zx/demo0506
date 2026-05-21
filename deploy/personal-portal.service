@@ -1,0 +1,19 @@
+[Unit]
+Description=Personal Portal static web app
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/personal-portal
+Environment=NODE_ENV=production
+Environment=HOST=127.0.0.1
+Environment=PORT=5062
+ExecStart=/usr/bin/npm run start
+Restart=always
+RestartSec=3
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+

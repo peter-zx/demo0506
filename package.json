@@ -1,10 +1,11 @@
 {
-  "name": "jarvis-work-report",
+  "name": "personal-portal-tool-deck",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "node scripts/dev-server.mjs",
-    "serve": "node scripts/dev-server.mjs"
+    "serve": "node scripts/dev-server.mjs",
+    "start": "node scripts/dev-server.mjs"
   }
 }

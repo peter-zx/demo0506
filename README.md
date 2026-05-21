@@ -1,6 +1,8 @@
-# 贾维斯 - 工作汇报小工具
+# 竹行舟 - 个人门户与工具矩阵
 
-一个可部署、可分发、可维护的工作汇报文本生成工具。用户可以逐条填写：
+一个个人形象站与工具集合入口。首页为“航行计时”风格的个人门户，后续通过工具卡片进入不同项目。
+
+当前项目内置了一个“贾维斯工作汇报”工具，可以逐条填写：
 
 - 做了什么内容
 - 什么进展
@@ -15,6 +17,10 @@
 ├── config/
 │   ├── app.config.development.json
 │   └── app.config.production.json
+├── deploy/
+│   ├── INTEGRATION_PLAN.md
+│   ├── nginx-personal-portal.conf
+│   └── personal-portal.service
 ├── public/
 │   └── app.config.json
 ├── src/
@@ -30,12 +36,20 @@
 │       └── reportView.js
 ├── styles/
 │   └── main.css
+├── tools/
+│   └── work-report.html
 └── index.html
 ```
 
 ## 本地运行
 
-直接用浏览器打开 `index.html` 即可运行。
+直接用浏览器打开 `index.html` 即可查看个人门户。
+
+工作汇报工具入口：
+
+```text
+tools/work-report.html
+```
 
 如需模拟服务器部署，可在项目根目录启动内置静态服务器：
 
@@ -47,6 +61,37 @@ npm run dev
 
 ```text
 http://127.0.0.1:8080
+```
+
+## 服务器部署
+
+服务器运行时建议使用 systemd 托管进程。门户默认内部端口为 `5062`：
+
+```bash
+HOST=127.0.0.1 PORT=5062 npm run start
+```
+
+如需安装为系统服务，可参考 `deploy/personal-portal.service`。
+多项目整合方案见 `deploy/INTEGRATION_PLAN.md`。
+
+## 部署脚本
+
+服务器初始化：
+
+```bash
+bash deploy/server-bootstrap.sh
+```
+
+部署门户：
+
+```bash
+bash deploy/deploy-portal.sh
+```
+
+检查工具仓库技术栈：
+
+```bash
+bash deploy/inspect-tool-repos.sh
 ```
 
 ## 配置方式

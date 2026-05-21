@@ -13,10 +13,11 @@ const defaultConfig = {
 };
 
 async function bootstrap() {
-  const config = await loadConfig("./public/app.config.json", defaultConfig);
+  const root = document.querySelector("[data-app-root]");
+  const configUrl = root?.dataset.configUrl || "./public/app.config.json";
+  const config = await loadConfig(configUrl, defaultConfig);
   const logger = createLogger(config.logLevel);
   const storage = new LocalDraftStorage(config.storageKey, logger);
-  const root = document.querySelector("[data-app-root]");
 
   if (!root) {
     logger.error("Application root not found.");
@@ -33,7 +34,8 @@ async function bootstrap() {
   view.mount();
 }
 
-bootstrap().catch((error) => {
-  console.error("[jarvis] bootstrap failed", error);
-});
-
+if (typeof document !== "undefined") {
+  bootstrap().catch((error) => {
+    console.error("[jarvis] bootstrap failed", error);
+  });
+}

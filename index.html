@@ -3,84 +3,119 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="贾维斯工作汇报小工具" />
-    <title>贾维斯工作汇报</title>
+    <meta name="description" content="个人形象站与工具集合入口" />
+    <title>竹行舟 | 个人工作台</title>
     <link rel="stylesheet" href="./styles/main.css" />
   </head>
   <body>
-    <main class="app-shell" data-app-root>
-      <section class="workspace" aria-label="工作汇报编辑器">
-        <header class="topbar">
-          <div>
-            <h1 data-app-title>贾维斯</h1>
-            <p data-app-subtitle>工作汇报小工具</p>
-          </div>
-          <div class="topbar-actions">
-            <button class="icon-button ghost" type="button" data-action="clear" title="清空全部">
-              <span aria-hidden="true">×</span>
-              <span class="sr-only">清空全部</span>
-            </button>
-          </div>
-        </header>
+    <main class="portal-shell">
+      <nav class="portal-nav" aria-label="主导航">
+        <a class="brand-mark" href="./index.html">竹行舟</a>
+        <div class="nav-links">
+          <a href="#voyage">航行计时</a>
+          <a href="#tools">工具矩阵</a>
+          <a href="#deploy">服务架构</a>
+        </div>
+      </nav>
 
-        <section class="editor-panel" aria-label="汇报条目">
-          <div class="section-heading">
-            <h2>今日事项</h2>
-            <button class="text-button" type="button" data-action="add">新增下一条</button>
+      <section class="hero-section" id="voyage" aria-label="航行计时主页">
+        <div class="hero-copy">
+          <p class="eyebrow">Personal Command Center</p>
+          <h1>航行计时</h1>
+          <p class="hero-lead">
+            把长期主义、日常工具和个人表达收束在一个入口里。这里是我的个人形象站，也是所有工作效率工具的统一甲板。
+          </p>
+          <div class="hero-actions">
+            <a class="hero-button primary" href="https://codeup.aliyun.com/65395bc29fb5e4b27ec5da1d/bamboox2023_hangxing.git">主页仓库</a>
+            <a class="hero-button" href="#tools">查看工具</a>
           </div>
-          <div class="entry-list" data-entry-list></div>
-        </section>
-
-        <section class="preview-panel" aria-label="汇报文本">
-          <div class="section-heading">
-            <h2>汇报文本</h2>
-            <button class="text-button primary" type="button" data-action="copy">一键复制</button>
+        </div>
+        <div class="voyage-panel" aria-label="航行状态">
+          <div class="radar">
+            <span></span>
           </div>
-          <textarea class="report-output" data-report-output readonly spellcheck="false"></textarea>
-          <p class="status-line" data-status-line role="status" aria-live="polite"></p>
-        </section>
+          <dl class="voyage-stats">
+            <div>
+              <dt>主站</dt>
+              <dd>航行计时</dd>
+            </div>
+            <div>
+              <dt>服务模式</dt>
+              <dd>统一入口 + 独立工具</dd>
+            </div>
+            <div>
+              <dt>目标服务器</dt>
+              <dd>123.56.100.146</dd>
+            </div>
+          </dl>
+        </div>
       </section>
 
-      <nav class="bottom-menu" aria-label="底部操作菜单">
-        <button class="bottom-menu-button" type="button" data-action="add">
-          <span class="bottom-menu-icon" aria-hidden="true">+</span>
-          <span>新增下一条</span>
-        </button>
-        <button class="bottom-menu-button primary" type="button" data-action="copy">
-          <span class="bottom-menu-icon" aria-hidden="true">⧉</span>
-          <span>复制文本</span>
-        </button>
-        <button class="bottom-menu-button" type="button" data-action="clear">
-          <span class="bottom-menu-icon" aria-hidden="true">×</span>
-          <span>清空</span>
-        </button>
-      </nav>
-    </main>
-
-    <template data-entry-template>
-      <article class="entry-card">
-        <div class="entry-card-header">
-          <span class="entry-index"></span>
-          <button class="icon-button" type="button" data-entry-remove title="删除此条">
-            <span aria-hidden="true">×</span>
-            <span class="sr-only">删除此条</span>
-          </button>
+      <section class="tools-section" id="tools" aria-label="工具卡片页">
+        <div class="section-title">
+          <p class="eyebrow">Tool Deck</p>
+          <h2>工具矩阵</h2>
+          <p>每个工具独立部署、独立维护，统一从这里进入。后续可接 Nginx 路由、HTTPS 和访问控制。</p>
         </div>
-        <label>
-          <span>做了什么内容</span>
-          <textarea data-field="content" rows="2" placeholder="例如：完成客户资料整理"></textarea>
-        </label>
-        <label>
-          <span>什么进展</span>
-          <textarea data-field="progress" rows="2" placeholder="例如：已整理 12 家客户，待补充联系方式"></textarea>
-        </label>
-        <label>
-          <span>复盘反思</span>
-          <textarea data-field="reflection" rows="2" placeholder="例如：后续按行业分类会更便于跟进"></textarea>
-        </label>
-      </article>
-    </template>
 
-    <script type="module" src="./src/app.js"></script>
+        <div class="tool-grid">
+          <a class="tool-card highlighted" href="./tools/work-report.html">
+            <span class="tool-tag">Local</span>
+            <h3>贾维斯工作汇报</h3>
+            <p>逐条填写内容、进展、复盘，一键生成带序号汇报文本。</p>
+            <span class="tool-link">打开工具</span>
+          </a>
+
+          <a class="tool-card" href="/tools/accounting/">
+            <span class="tool-tag">Tool 01</span>
+            <h3>记账工具</h3>
+            <p>个人收支、日常账目与财务记录入口。</p>
+            <span class="tool-link">进入服务</span>
+          </a>
+
+          <a class="tool-card" href="/tools/vault-note/">
+            <span class="tool-tag">Tool 02</span>
+            <h3>Vault Note</h3>
+            <p>资料沉淀、笔记管理和个人知识库工具。</p>
+            <span class="tool-link">进入服务</span>
+          </a>
+
+          <a class="tool-card" href="/tools/excel-fapiao/">
+            <span class="tool-tag">Tool 03</span>
+            <h3>Excel 发票工具</h3>
+            <p>面向发票和表格处理的效率工具。</p>
+            <span class="tool-link">进入服务</span>
+          </a>
+
+          <a class="tool-card" href="/tools/workdata/">
+            <span class="tool-tag">Tool 04</span>
+            <h3>Work Data</h3>
+            <p>工作数据处理、归档和辅助分析工具。</p>
+            <span class="tool-link">进入服务</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="deploy-section" id="deploy" aria-label="服务架构">
+        <div class="section-title compact">
+          <p class="eyebrow">Deployment</p>
+          <h2>推荐服务器形态</h2>
+        </div>
+        <div class="deploy-grid">
+          <div>
+            <strong>统一主入口</strong>
+            <p>Nginx 监听 80/443，把 `/` 指向个人门户和航行计时。</p>
+          </div>
+          <div>
+            <strong>工具独立服务</strong>
+            <p>每个仓库独立目录、独立 systemd 服务、独立本地端口。</p>
+          </div>
+          <div>
+            <strong>路由聚合</strong>
+            <p>通过 `/tools/accounting/`、`/tools/vault/` 等路径代理到各工具。</p>
+          </div>
+        </div>
+      </section>
+    </main>
   </body>
 </html>

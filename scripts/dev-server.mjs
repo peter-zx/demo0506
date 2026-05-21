@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 
 const rootDir = normalize(join(fileURLToPath(import.meta.url), "..", ".."));
 const port = Number(process.env.PORT || 8080);
+const host = process.env.HOST || "127.0.0.1";
 
 const mimeTypes = {
   ".css": "text/css; charset=utf-8",
@@ -48,7 +49,6 @@ const server = createServer(async (request, response) => {
   }
 });
 
-server.listen(port, "127.0.0.1", () => {
-  console.log(`[jarvis] listening on http://127.0.0.1:${port}`);
+server.listen(port, host, () => {
+  console.log(`[jarvis] listening on http://${host}:${port}`);
 });
-
